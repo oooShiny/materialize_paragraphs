@@ -1,0 +1,17 @@
+{% set banner = content.field_option_type|escape|lower|trim %}
+<div class="card-panel deep-purple-text" style="position: relative;">
+    {% if banner == 'unlimited' %}
+        <div class="ribbon ribbon-purple">
+            <div class="banner">
+                <div class="text">{{ content.field_option_type }}</div>
+            </div>
+        </div>
+    {% endif %}
+    <span class="price">{{ content.field_price }}</span>
+    <br>
+    <span class="black-text">{{ label }}</span>
+    <br>
+    <span class="duration">{{ content.field_duration }} expiration</span>
+    <br>
+    <a class="btn purple white-text" href="{{ content.field_zen_planner_link.0['#url'] }}">Buy Now</a>
+</div>

@@ -1,0 +1,7 @@
+name: Materialize Paragraphs
+type: module
+description: A group of paragraphs that work with the Materialize theme to create responsive layouts.
+core: 8.x
+package: Custom
+dependencies:
+  - paragraphs

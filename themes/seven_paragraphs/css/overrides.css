@@ -1,0 +1,45 @@
+
+/* Removing 2-column layout for node edit pages. */
+.layout-region-node-main, .layout-region-node-footer {
+    float: none;
+    width: 100%;
+}
+.layout-region-node-secondary {
+    float: none;
+    width: 100%;
+}
+
+/* Fixing tabledrag icon display. */
+a.tabledrag-handle .handle {
+    height: 23px;
+    margin: 0;
+    padding: 0;
+    width: 23px;
+}
+
+/* Fixing the lack of padding on tables that Bootstrap introduced. */
+td, th {
+    padding: 1em;
+}
+
+/*!* Mimicking .container-fluid from bootstrap theme. *!*/
+/*[data-drupal-selector^="edit-field-content-slice"] {*/
+    /*margin-right: auto;*/
+    /*margin-left: auto;*/
+    /*padding-left: 15px;*/
+    /*padding-right: 15px;*/
+/*}*/
+
+/*!* Mimicking .row from bootstrap theme. *!*/
+/*[data-drupal-selector^="edit-field-content-slice"] div.paragraphs-subform  {*/
+    /*margin-left: -15px;*/
+    /*margin-right: -15px;*/
+/*}*/
+/*[data-drupal-selector^="edit-field-content-slice"] div.paragraphs-subform:before,*/
+/*[data-drupal-selector^="edit-field-content-slice"] div.paragraphs-subform:after {*/
+    /*content: " ";*/
+    /*display: table;*/
+/*}*/
+/*[data-drupal-selector^="edit-field-content-slice"] div.paragraphs-subform:after {*/
+    /*clear: both;*/
+/*}*/

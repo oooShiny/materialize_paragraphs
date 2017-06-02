@@ -1,0 +1,14 @@
+{
+  "name": "drupal/materialize_paragraphs",
+  "type": "drupal-module",
+  "description": "A group of paragraphs that work with the Materialize theme to create responsive layouts.",
+  "keywords": ["Drupal"],
+  "license": "GPL-2.0+",
+  "homepage": "https://www.drupal.org/project/materialize_paragraphs",
+  "minimum-stability": "dev",
+  "support": {
+    "issues": "http://drupal.org/project/issues/materialize_paragraphs",
+    "source": "http://cgit.drupalcode.org/materialize_paragraphs"
+  },
+  "require": { }
+}

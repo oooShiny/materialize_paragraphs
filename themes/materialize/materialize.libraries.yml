@@ -1,0 +1,19 @@
+global-styling:
+  css:
+    theme:
+      css/materialize.css: {}
+      css/overrides.css: {}
+      css/nfl.css: {}
+  js:
+    js/isotope.pkgd.min.js: {}
+    js/materialize.js: {}
+  dependencies:
+    - core/jquery
+
+
+parallax-init:
+  header: true
+  js:
+    js/parallax-init.js: {}
+  dependencies:
+    - core/jquery

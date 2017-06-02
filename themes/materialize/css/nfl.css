@@ -1,0 +1,318 @@
+
+/* Team listing circles */
+.team {
+    float: left;
+    width: 8em;
+    text-align: center;
+    border-radius: 50%;
+    margin: 1em;
+    padding: 1em;
+    padding-top: 2.3em;
+    font-weight: bold;
+    line-height: 1;
+    height: 8em;
+    box-shadow: 6px 8px 13px 0 rgba(4,4,4,.17);
+}
+.team {
+    color: white;
+    font-weight: normal;
+}
+.total {
+    padding: 1em;
+    padding-top: 1.5em;
+    line-height: 1;
+    box-shadow: 6px 8px 13px 0 rgba(4,4,4,.17);
+}
+.teams:after {
+    clear: both;
+}
+#footer {
+    display: none;
+}
+
+/* Team Colors */
+.miami-dolphins {
+    color: white;
+    background: #008D97;
+    border: 0.25em solid #F5811F;
+}
+.buffalo-bills {
+    color: white;
+    background: #00338D;
+    border: 0.25em solid #C60C30;
+}
+.new-york-jets {
+    color: white;
+    background: #0C371D;
+    border: 0.25em solid white;
+}
+.kansas-city-chiefs {
+    color: white;
+    background: #B20032;
+    border: 0.25em solid #F2C800;
+}
+.oakland-raiders {
+    color: #C4C8CB;
+    background: black;
+    border: 0.25em solid #C4C8CB;
+}
+.denver-broncos {
+    color: #002244;
+    background: #FB4F14;
+    border: 0.25em solid #002244;
+}
+.los-angeles-chargers {
+    color: #0C2340;
+    background: #FFB81C;
+    border: 0.25em solid #0072CE;
+}
+.pittsburgh-steelers {
+    color: #FFB612;
+    background: black;
+    border: 0.25em solid #FFB612;
+}
+.baltimore-ravens {
+    color: #D0B240;
+    background: #280353;
+    border: 0.25em solid #D0B240;
+}
+.cincinnati-bengals {
+    color: white;
+    background: #FB4F14;
+    border: 0.25em solid black;
+}
+.cleveland-browns {
+    color: #512F2D;
+    background: #FE3C00;
+    border: 0.25em solid #512F2D;
+}
+.houston-texans {
+    color: white;
+    background: #02253A;
+    border: 0.25em solid #B31B34;
+}
+.tennessee-titans {
+    color: white;
+    background: #648FCC;
+    border: 0.25em solid #0D254C;
+}
+.indianapolis-colts {
+    color: white;
+    background: #003B7B;
+    border: 0.25em solid white;
+}
+.jacksonville-jaguars {
+    color: #D7A22A;
+    background: #006778;
+    border: 0.25em solid black;
+}
+.dallas-cowboys {
+    color: white;
+    background: #0D254C;
+    border: 0.25em solid #87909B;
+}
+.new-york-giants {
+    color: white;
+    background: #192F6B;
+    border: 0.25em solid #CA001A;
+}
+.washington-redskins {
+    color: #FFB612;
+    background: #773141;
+    border: 0.25em solid #FFB612;
+}
+.philadelphia-eagles {
+    color: #C0C0C0;
+    background: #003B48;
+    border: 0.25em solid #708090;
+}
+.seattle-seahawks {
+    color: #A5ACAF;
+    background: #002244;
+    border: 0.25em solid #69BE28;
+}
+.arizona-cardinals {
+    color: white;
+    background: #9B2743;
+    border: 0.25em solid black;
+}
+.los-angeles-rams {
+    color: #C9AF74;
+    background: #13264B;
+    border: 0.25em solid #C9AF74;
+}
+.san-fransisco-49ers {
+    color: #E6BE8A;
+    background: #AF1E2C;
+    border: 0.25em solid #E6BE8A;
+}
+.green-bay-packers {
+    color: #FFB612;
+    background: #203731;
+    border: 0.25em solid #FFB612;
+}
+.detroit-lions {
+    color: #C5C7CF;
+    background: #006DB0;
+    border: 0.25em solid #C5C7CF;
+}
+.minnesota-vikings {
+    color: #F0BF00;
+    background: #582C81;
+    border: 0.25em solid #F0BF00;
+}
+.chicago-bears {
+    color: #DD4814;
+    background: #03202F;
+    border: 0.25em solid #DD4814;
+}
+.atlanta-falcons {
+    color: white;
+    background: #A6192D;
+    border: 0.25em solid black;
+}
+.tampa-bay-buccaneers {
+    color: white;
+    background: #D60A0B;
+    border: 0.25em solid #89765F;
+}
+.new-orleans-saints {
+    color: #D2B887;
+    background: black;
+    border: 0.25em solid #D2B887;
+}
+.carolina-panthers {
+    color: white;
+    background: #0088CE;
+    border: 0.25em solid #A5ACAF;
+}
+
+/* Pie Chart CSS */
+.pie {
+    position: relative;
+    width: 5.75em;
+    height: 5.75em;
+    border-radius: 50%;
+    background: #053c65;
+    background-image: linear-gradient(to right, transparent 50%, #c41334 0);
+    color: transparent;
+    text-align: center;
+    z-index: 0;
+    border: .17em solid #c41334;
+}
+.pie-overlay {
+    z-index: 1;
+    position: absolute;
+}
+@keyframes spin {
+    to { transform: rotate(.5turn); }
+}
+@keyframes bg {
+    50% { background: #053c65; }
+}
+
+.pie::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 50%;
+    width: 50%; height: 100%;
+    border-radius: 0 100% 100% 0 / 50%;
+    background-color: inherit;
+    transform-origin: left;
+    animation: spin 50s linear infinite,
+    bg 100s step-end infinite;
+    animation-play-state: paused;
+    animation-delay: inherit;
+}
+.stat-contain {
+    clear: both;
+    display: flex;
+    padding: 1em;
+}
+/* Total stats pie graphs */
+.total.nfl {
+    float: none;
+    color: white;
+    font-size: 200% !important;
+    padding: 2em;
+}
+.total.nfl, .total.afc, .total.nfc {
+    font-size: 160%;
+    text-align: center;
+    margin: 0;
+}
+.total.afc,
+.total.nfc,
+.total.afc-div,
+.total.nfc-div {
+    color: white;
+}
+.total.nfl.pie {
+    width: 8em;
+    height: 8em;
+}
+
+.total.afc-div.pie,
+.total.nfc-div.pie {
+    width: 6.5em;
+    height: 6.5em;
+}
+
+.graph {
+    width: inherit;
+    margin: 0 auto;
+}
+
+/* Games Listing */
+.season-menu a:hover {
+    color: #c41334;
+}
+.season-menu a {
+    color: #053c65;
+}
+.loss {
+    color: red;
+}
+.win {
+    color: green;
+}
+.win a, .loss a {
+    color: inherit;
+}
+.win a:hover, .loss a:hover {
+    text-decoration: underline;
+}
+
+/* Hide form labels on games listing page */
+.form-item-field-home-away-value label,
+.form-item-field-result-value label,
+.form-item-field-week-target-id label {
+    display: none;
+}
+
+ul.collapsible {
+    background: white;
+}
+
+/* Display games listing page filters as sidebar on desktop */
+@media only screen and (min-width : 601px) {
+    div#block-exposedformgamespage-7,
+    div#block-exposed-form-brady-games {
+        position: absolute;
+        left: 0;
+        top: 4em;
+    }
+    div.game-buttons input {
+        display: block;
+        margin-bottom: 1em;
+        margin-top: 1em;
+    }
+}
+
+span.stat {
+    float: right;
+}
+li.brady {
+    color: #c41334;
+    font-weight: bold;
+}

@@ -1,0 +1,112 @@
+<?php
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Theme\ThemeSettings;
+use Drupal\system\Form\ThemeSettingsForm;
+use Drupal\Core\Form;
+
+/**
+ * Implements hook_form_system_theme_settings_alter().
+ */
+function materialize_form_system_theme_settings_alter(&$form, Drupal\Core\Form\FormStateInterface $form_state) {
+
+  $form['materialize_settings'] = array(
+    '#type' => 'details',
+    '#open' => TRUE,
+    '#title' => t('Materialize Settings'),
+    '#description' => t('Change your theme color settings here.'),
+  );
+
+  // Color Settings.
+  $form['materialize_settings']['color'] = array(
+    '#type' => 'details',
+    '#title' => t('Materialize Color Settings'),
+  );
+  // Header Color Settings.
+  $form['materialize_settings']['color']['header_bg_color'] = array(
+    '#type' => 'color',
+    '#title' => t('Header Background Color'),
+    '#default_value' => theme_get_setting('header_bg_color', 'materialize'),
+  );
+  $form['materialize_settings']['color']['header_text_color'] = array(
+    '#type' => 'color',
+    '#title' => t('Header Text Color'),
+    '#default_value' => theme_get_setting('header_text_color', 'materialize'),
+  );
+  // Body Color Settings.
+  $form['materialize_settings']['color']['body_bg_color'] = array(
+    '#type' => 'color',
+    '#title' => t('Body Background Color'),
+    '#default_value' => theme_get_setting('body_bg_color', 'materialize'),
+  );
+  // Footer Color Settings.
+  $form['materialize_settings']['color']['footer_bg_color'] = array(
+    '#type' => 'color',
+    '#title' => t('Footer Background Color'),
+    '#default_value' => theme_get_setting('footer_bg_color', 'materialize'),
+  );
+  $form['materialize_settings']['color']['footer_text_color'] = array(
+    '#type' => 'color',
+    '#title' => t('Footer Text Color'),
+    '#default_value' => theme_get_setting('footer_text_color', 'materialize'),
+  );
+  $form['materialize_settings']['footer']['footer_copyright'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Footer Copyright Text'),
+    '#default_value' => theme_get_setting('footer_copyright', 'materialize'),
+    '#description' => t('Example: <em>&copy; ' . date('Y') . ' [Footer Copyright Text]</em>'),
+  );
+
+}
+
+/**
+ * Implements hook_preprocess_page() to add variables to page.html.twig template.
+ */
+function materialize_preprocess_page(&$variables) {
+  $variables['header_bg'] = theme_get_setting('header_bg_color','materialize');
+  $variables['header_txt'] = theme_get_setting('header_text_color','materialize');
+  $variables['footer_bg'] = theme_get_setting('footer_bg_color','materialize');
+  $variables['footer_txt'] = theme_get_setting('footer_text_color','materialize');
+  $variables['copyright'] = theme_get_setting('footer_copyright', 'materialize');
+}
+
+/**
+ * Implements hook_preprocess_html() to add variables to html.html.twig template.
+ */
+function materialize_preprocess_html(&$variables) {
+  $variables['body_bg'] = theme_get_setting('body_bg_color','materialize');
+  $variables['page']['#attached']['library'][] = 'materialize/parallax-init';
+}
+
+/**
+ * Implements hook_preprocess_node() to add JS to Article pages.
+ */
+function materialize_preprocess_node(&$variables) {
+  $variables['elements']['#attached']['library'][] = 'materialize/parallax-init';
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter() for node templates.
+ */
+function materialize_theme_suggestions_views_alter(array &$suggestions, array $variables) {
+  $suggestions[] = 'node__' . 'first';
+  $suggestions[] = 'node__' . 'second';
+}
+
+function materialize_preprocess_image_style(&$variables) {
+  if ($variables['style_name'] == 'round_image') {
+    $variables['image']['#attributes']['class'] = 'circle';
+  }
+
+  if ($variables['style_name'] == 'card_image') {
+    $variables['image']['#attributes']['class'] = 'card';
+  }
+}
+
+/**
+ * Implements hook_preprocess_image() to add class to responsive images.
+ */
+function materialize_preprocess_image(&$variables) {
+  if ($variables['style_name'] == 'responsive_image') {
+    $variables['attributes']['class'][] = 'responsive-img';
+  }
+}

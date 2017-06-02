@@ -1,0 +1,9 @@
+name: Paragraphs Admin Theme
+type: theme
+description: This is a Paragraphs-centric sub theme of Seven
+core: 8.x
+# Defines the base theme
+base theme: seven
+# Defines libraries group in which we can add css/js.
+libraries:
+  - seven_paragraphs/global-styling

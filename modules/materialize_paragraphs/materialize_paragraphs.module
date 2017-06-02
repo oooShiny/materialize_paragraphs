@@ -1,0 +1,87 @@
+<?php
+
+/**
+ * @file
+ * Contains materialize_paragraphs.module..
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function materialize_paragraphs_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the materialize_paragraphs module.
+    case 'help.page.materialize_paragraphs':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('A group of paragraphs that work with the Materialize theme to create responsive layouts.') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Prepares variables for paragraph templates.
+ *
+ * Default template: paragraph.html.twig.
+ *
+ * @param array $variables
+ *   An associative array containing:
+ *   - elements: An array of elements to display in view mode.
+ *   - paragraph: The paragraph object.
+ *   - view_mode: View mode; e.g., 'full', 'teaser'...
+ */
+function materialize_paragraphs_preprocess_paragraph(&$variables) {
+  $variables['view_mode'] = $variables['elements']['#view_mode'];
+  $variables['paragraph'] = $variables['elements']['#paragraph'];
+  $type = $variables['paragraph']->getType();
+  // Set classes based on column alignment settings.
+  if (isset($variables['content']['field_column_alignment'])) {
+    // Set defaults.
+    $first_column = 'col s12 m6 l6';
+    $second_column = 'col s12 m6 l6';
+    switch($variables['content']['field_column_alignment'][0]['#markup']) {
+      case '5050':
+        $first_column = 'col s12 m6 l6';
+        $second_column = 'col s12 m6 l6';
+        break;
+      case '6040':
+        $first_column = 'col s12 m8 l8';
+        $second_column = 'col s12 m4 l4';
+        break;
+      case '4060':
+        $first_column = 'col s12 m4 l4';
+        $second_column = 'col s12 m8 l8';
+        break;
+      case '7030':
+        $first_column = 'col s12 m9 l9';
+        $second_column = 'col s12 m3 l3';
+        break;
+      case '3070':
+        $first_column = 'col s12 m3 l3';
+        $second_column = 'col s12 m9 l9';
+    }
+    $variables['left_width'] = $first_column;
+    $variables['right_width'] = $second_column;
+  }
+
+  // Get 1 Column Row Paragraph
+  if ($type == '1_column_row') {
+    $row_content = $variables['paragraph']->get('field_first_column');
+    $child = $row_content->referencedEntities();
+    $child_type = $child[0]->getType();
+    if ($child_type == 'banner_image') {
+      $variables['column_width'] = 'full';
+    }
+  }
+  // Check to see if Card paragraph has an image or not.
+  if ($type == 'card') {
+    $card_image = $variables['paragraph']->get('field_card_image')->count();
+    if ($card_image > 0) {
+      $variables['has_image'] = true;
+    }
+  }
+}
